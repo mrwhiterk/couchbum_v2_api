@@ -1,3 +1,4 @@
 var usersRouter = require('./users');
+var listingsRouter = require('./listings');
 
-module.exports = { usersRouter };
+module.exports = { usersRouter, listingsRouter };
