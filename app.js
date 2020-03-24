@@ -1,5 +1,5 @@
-var express = require("express");
-var logger = require("morgan");
+const express = require("express");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const passport = require("passport");
@@ -9,7 +9,7 @@ const { usersRouter, listingsRouter } = require("./routes");
 require("dotenv").config();
 
 
-var app = express();
+const app = express();
 
 mongoose
 .connect(process.env.MONGO_URI, {
@@ -25,7 +25,6 @@ mongoose
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
-
 app.use(passport.initialize());
 app.use("/api/users", usersRouter);
 app.use("/api/listings", listingsRouter);

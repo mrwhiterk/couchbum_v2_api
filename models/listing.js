@@ -18,12 +18,13 @@ const listingSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
-    notes: String,
+    description: String,
     available: {
       type: Boolean,
       default: true
-    }
-
+    },
+    isTraveler: { type: Boolean, default: false },
+    isHost: { type: Boolean, default: false }
   },
   {
     timestamps: true
