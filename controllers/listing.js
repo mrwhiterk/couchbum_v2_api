@@ -4,7 +4,7 @@ const authenticate = require("../authenticate");
 
 exports.index = async (req, res) => {
   try {
-    let listings = await Listing.find().populate('host', 'username').exec();
+    let listings = await Listing.find().populate('host', 'username avatar').exec();
     res.send(listings);
   } catch (error) {
     console.log(error);

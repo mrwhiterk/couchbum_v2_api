@@ -38,7 +38,8 @@ exports.register = async (req, res) => {
             passport.authenticate("local")(req, res, () => {
               const token = authenticate.getToken({
                 _id: req.user._id,
-                username: req.user.username
+                username: req.user.username,
+                avatar: req.user.avatar
               });
               res.send({
                 user,
@@ -56,13 +57,20 @@ exports.register = async (req, res) => {
 exports.login = (req, res) => {
   const token = authenticate.getToken({
     _id: req.user._id,
-    username: req.user.username
+    username: req.user.username,
+    avatar: req.user.avatar
   });
   res.send({ success: true, user: req.user, token });
 };
 
-exports.show = (req, res) => {
-  res.send(req.user);
+exports.show = async (req, res) => {
+  console.log(req.params)
+  try {
+    let user = await User.findById(req.params.id) 
+    res.send(user);
+  } catch (err) {
+    res.send({ err });
+  }
 };
 
 exports.deleteUser = async (req, res) => {
