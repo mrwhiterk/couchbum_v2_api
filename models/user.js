@@ -30,7 +30,10 @@ const userSchema = new Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Video"
       }
-    ]
+    ],
+    avatar: String,
+    isTraveler: { type: Boolean, default: false },
+    isHost: { type: Boolean, default: false }
   },
   {
     timestamps: true

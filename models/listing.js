@@ -8,9 +8,9 @@ const listingSchema = new Schema(
       required: true
     },
     address: {
-      Street: String,
-      City: String,
-      State: String,
+      street: String,
+      city: String,
+      state: String,
       ZIP: String
     },
     images: [{ type: String }],
@@ -22,9 +22,7 @@ const listingSchema = new Schema(
     available: {
       type: Boolean,
       default: true
-    },
-    isTraveler: { type: Boolean, default: false },
-    isHost: { type: Boolean, default: false }
+    }
   },
   {
     timestamps: true
