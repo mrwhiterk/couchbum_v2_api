@@ -3,9 +3,24 @@ const passport = require('passport');
 const authenticate = require("../authenticate");
 
 exports.index = async (req, res) => {
-  let users = await User.find();
-  res.send(users);
+  try {
+    let users = await User.find();
+    res.send(users);
+    
+  } catch (error) {
+    console.log(error)
+  }
 };
+
+exports.getTravelers = async (req, res) => {
+  try {
+    let travelers = await User.find();
+    res.send(travelers);
+
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 exports.register = async (req, res) => {
     User.register(

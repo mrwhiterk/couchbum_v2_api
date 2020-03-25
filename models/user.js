@@ -14,11 +14,11 @@ const userSchema = new Schema(
     },
     isHost: {
       type: Boolean,
-      required: false
+      default: false
     },
     isTraveler: {
       type: Boolean,
-      required: false
+      default: false
     },
     skills: [
       {
@@ -28,12 +28,11 @@ const userSchema = new Schema(
     listings: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Video"
+        ref: "Listing"
       }
     ],
     avatar: String,
-    isTraveler: { type: Boolean, default: false },
-    isHost: { type: Boolean, default: false }
+    bio: { type: String }
   },
   {
     timestamps: true
