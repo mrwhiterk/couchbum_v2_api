@@ -64,7 +64,6 @@ exports.login = (req, res) => {
 };
 
 exports.show = async (req, res) => {
-  console.log(req.params)
   try {
     let user = await User.findById(req.params.id) 
     res.send(user);
@@ -72,6 +71,35 @@ exports.show = async (req, res) => {
     res.send({ err });
   }
 };
+
+exports.put = async (req, res) => {
+  try {
+    let updatedUser = await User.findByIdAndUpdate(req.params.id, { $set:  req.body }, {new: true});
+    console.log(updatedUser);
+
+    res.send(updatedUser)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.addSkill = async (req, res) => {
+  try {
+    let updatedUser = await User.findByIdAndUpdate(req.params.id, { $push:  {skills: req.body.data} }, {new: true});
+    res.send(updatedUser)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.removeSkill = async (req, res) => {
+  try {
+    let updatedUser = await User.findByIdAndUpdate(req.params.id, { $pull:  {skills: req.body.data} }, {new: true});
+    res.send(updatedUser)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 exports.deleteUser = async (req, res) => {
   try {

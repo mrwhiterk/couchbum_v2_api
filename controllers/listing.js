@@ -24,7 +24,7 @@ exports.create = async (req, res) => {
   try {
     let listing = await Listing.create({
       ...req.body,
-      host: req.user._id
+      host: req.body.host
     });
     req.user.listings.push(listing);
 
